@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    background-color: rgb(237, 10, 188);
+    width: 100vw;
+    height: 100vh;
+}
+
+.Heading{
+    background-color: rgb(15, 180, 216);
+    height: 10vh;
+    text-align: center;
+    padding-bottom : 2vh;
+    background-image: url(https://img.freepik.com/premium-photo/luminous-harmony-serene-oasis-captured-within-ethereal-white-horizons_742252-25108.jpg);
+    font-size:large;
+    font-family: "Archivo Black", sans-serif;;
+ 
+}
+
+nav{
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-image: url(https://img1.cgtrader.com/items/4153742/4b1b8fe2cc/strip-club-3d-model-4b1b8fe2cc.jpg);
+    background-size: cover;
+
+}
+a{
+    text-decoration: none;
+    color: rgb(237, 12, 12);
+    font-size: large;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+}
+nav a:hover{
+    color: rgb(7, 227, 198);
+    font-size: x-large;
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function:ease-in-out;
+    transition-delay: 0s;
+}
+.container{
+    
+    
+}
+#info{
+   text-align: center;
+    height: 8vh;
+    padding-top: 2vh;
+    font-family: "Archivo Black", sans-serif;
+   
+
+}
+box1{
+   
+}

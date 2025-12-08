@@ -1,0 +1,40 @@
+*{
+    /* margin: 0; */
+    /* padding: 0; */
+}
+
+nav ul li {
+    background-color: red;
+    position: sticky;
+    list-style: square inside;  
+    
+}
+
+.para{
+    background-color: lightblue;
+    height: 15vh;
+    overflow: hidden;
+
+}
+
+.box1{
+    height: 30vh;
+    width: 30vw;
+    background-color: blue;
+    
+}
+
+.box2{
+    height: 30vh;
+    width: 30vw;
+    background-color: green;
+    
+    
+}
+
+.box3{
+    height: 30vh;
+    width: 30vw;
+    background-color: yellow;
+    
+}

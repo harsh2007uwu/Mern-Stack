@@ -1,0 +1,370 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harsh Dubey | Full Stack Developer</title>
+  <style>
+    /* ---------- GLOBAL STYLES ---------- */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #111111;
+      --accent-color: #007bff;
+      --card-bg: #f4f5f7;
+      --section-bg: #f9fafc;
+      --footer-bg: #eaeaea;
+      --border-color: #dcdcdc;
+      --hero-gradient-start: #f9f9f9;
+      --hero-gradient-end: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #020617;           /* slate-950 vibe */
+      --text-color: #e5e7eb;         /* light gray text */
+      --accent-color: #38bdf8;       /* cyan-ish accent */
+      --card-bg: #020617;            /* match body, rely on shadows/borders */
+      --section-bg: #020617;
+      --footer-bg: #020617;
+      --border-color: #1f2933;
+      --hero-gradient-start: #020617;
+      --hero-gradient-end: #020617;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: var(--card-bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent-color);
+    }
+
+    nav a {
+      margin-left: 25px;
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-left: 20px;
+      user-select: none;
+    }
+
+    /* ---------- HERO SECTION ---------- */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      text-align: center;
+      background: linear-gradient(
+        to bottom,
+        var(--hero-gradient-start),
+        var(--hero-gradient-end)
+      );
+      transition: background 0.3s ease;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+
+    .hero h2 {
+      color: var(--accent-color);
+      font-size: 1.6rem;
+      margin-top: 10px;
+    }
+
+    .typing {
+      border-right: 2px solid var(--accent-color);
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(30, end) infinite alternate;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    /* ---------- ABOUT SECTION ---------- */
+    .about {
+      padding: 80px 60px;
+      text-align: center;
+      background: var(--section-bg);
+      transition: background-color 0.3s ease;
+    }
+
+    .about h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: 20px auto;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* ---------- SKILLS SECTION ---------- */
+    .skills {
+      padding: 80px 60px;
+      background: var(--card-bg);
+      transition: background-color 0.3s ease;
+    }
+
+    .skills h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .skill {
+      background: var(--bg-color);
+      color: var(--text-color);
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--accent-color);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* ---------- PROJECTS SECTION ---------- */
+    a{
+      text-decoration: none;
+    }
+    .projects {
+      padding: 80px 60px;
+      text-align: center;
+      background: var(--bg-color);
+      transition: background-color 0.3s ease;
+    }
+
+    .projects h2 {
+      font-size: 2rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 25px;
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.5);
+    }
+
+    .project-card h3 {
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    /* ---------- CONTACT SECTION ---------- */
+    .contact {
+      padding: 80px 60px;
+      background: var(--card-bg);
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .contact a {
+      display: inline-block;
+      margin: 10px;
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--footer-bg);
+      border-top: 1px solid var(--border-color);
+      font-size: 0.95rem;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+      }
+      nav {
+        margin-top: 10px;
+      }
+      .about, .skills, .projects, .contact {
+        padding: 60px 30px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Harsh Dubey</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <span class="theme-toggle" id="theme-toggle">🌙</span>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Hi, I'm <span style="color:var(--accent-color)">Harsh Dubey</span></h1>
+    <h2 class="typing">Full Stack Developer</h2>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate Full Stack Developer focused on crafting modern, responsive, and visually appealing web applications. 
+      My mission is to deliver seamless digital experiences through clean code and creative design.
+    </p>
+  </section>
+
+  <section class="skills" id="skills">
+    <h2>Skills</h2>
+    <div class="skill-list">
+      <div class="skill">HTML5</div>
+      <div class="skill">CSS3</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">React.js</div>
+      <div class="skill">Node.js</div>
+      <div class="skill">Express.js</div>
+      <div class="skill">MongoDB</div>
+      <div class="skill">Git / GitHub</div>
+      <div class="skill">Responsive Design</div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+        <a href="./Portfolio.html" target="_blank">
+        <div class="project-card">
+          <h3>Portfolio Website</h3>
+          <p>A responsive personal portfolio showcasing skills, projects, and contact information.</p>
+        </div>
+
+    </a>
+    <a href="https://harsh2007uwu.github.io/Amazon-Clone/" target="_blank">
+      <div class="project-card">
+        <h3>Amazon-Clone</h3>
+        <p>Amazon-style shopping UI built with HTML, CSS, and JavaScript.</p>
+      </div>
+
+    </a>
+    <a href="./game.html" target="_blank">
+      <div class="project-card">
+        <h3>Game Hub</h3>
+        <p>A fun web-based collection of mini-games created with HTML, CSS, and JavaScript.</p>
+      </div>
+
+    </a>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p>Let's connect 👇</p>
+    <a href="mailto:harshaf6969@gmail.com">📧 Email</a>
+    <a href="https://github.com/harsh2007uwu" target="_blank">💻 GitHub</a>
+    <a href="https://www.linkedin.com/in/harsh-dubey-402015342/" target="_blank">🔗 LinkedIn</a>
+  </section>
+
+  <footer>
+    <p>© 2025 Harsh Dubey | Full Stack Developer</p>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const toggleBtn = document.getElementById("theme-toggle");
+    toggleBtn.addEventListener("click", () => {
+      const currentTheme = document.body.getAttribute("data-theme");
+      if (currentTheme === "dark") {
+        document.body.removeAttribute("data-theme");
+        toggleBtn.textContent = "🌙";
+      } else {
+        document.body.setAttribute("data-theme", "dark");
+        toggleBtn.textContent = "🌞";
+      }
+    });
+  </script>
+</body>
+</html>

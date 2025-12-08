@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harsh | Developer Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #ff2c2c;
+      --bg-dark: #020617;      /* darker, more “true dark” */
+      --bg-light: #f5f5f5;
+      --text-dark: #e5e7eb;    /* softer white */
+      --text-light: #111;
+      --card-dark: #060815;
+      --card-light: #ffffff;
+      --border-dark: #1f2933;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+      transition: background 0.4s, color 0.4s;
+    }
+
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    /* ===== Header ===== */
+    header {
+      background: radial-gradient(circle at top left, #1f0000 0, #050509 40%, #000 100%);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 0 20px rgba(255, 44, 44, 0.4);
+      border-bottom: 1px solid rgba(255, 44, 44, 0.5);
+    }
+
+    header.light-mode {
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .logo {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.8rem;
+      color: white;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(255, 44, 44, 0.7);
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 400;
+    }
+
+    .light-mode .nav-links a {
+      color: black;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .toggle-btn {
+      background: none;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 500;
+      box-shadow: 0 0 10px rgba(255, 44, 44, 0.4);
+    }
+
+    .toggle-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+      transition: background 0.4s ease;
+    }
+
+    body.light-mode .hero {
+      background: linear-gradient(180deg, #ffffff, #f5f5f5);
+      color: var(--text-light);
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+    }
+
+    .hero span {
+      color: var(--primary);
+    }
+
+    #typing {
+      color: var(--primary);
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      min-height: 25px;
+      letter-spacing: 1px;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+      display: inline-block;
+      transition: 0.3s;
+      font-weight: 500;
+      box-shadow: 0 0 12px rgba(255, 44, 44, 0.6);
+    }
+
+    .btn:hover {
+      background: #d81b1b;
+      box-shadow: 0 0 18px var(--primary);
+    }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: 2rem auto;
+      background: var(--card-dark);
+      border-radius: 12px;
+      border: 1px solid var(--border-dark);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+      transition: background 0.4s, box-shadow 0.4s, border-color 0.4s;
+    }
+
+    .hero { /* hero is also a section but we already styled bg, so just remove card styling from it */
+      max-width: 100%;
+      margin: 0;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+    }
+
+    body.light-mode section {
+      background: var(--card-light);
+      border-color: #e5e5e5;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--primary);
+      font-family: "Orbitron", sans-serif;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* ===== Skills ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .skill {
+      background: #050814;
+      border: 1px solid rgba(255, 44, 44, 0.6);
+      padding: 1rem;
+      text-align: center;
+      border-radius: 8px;
+      transition: 0.3s;
+      box-shadow: 0 0 12px rgba(255, 44, 44, 0.25);
+      font-weight: 500;
+    }
+
+    .skill:hover {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 0 18px rgba(255, 44, 44, 0.8);
+      transform: translateY(-3px);
+    }
+
+    .light-mode .skill {
+      background: #fafafa;
+      border-color: #ff4d4d;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+
+    /* ===== Projects ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .project-card {
+      background: #050814;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 44, 44, 0.45);
+      transition: 0.3s;
+      box-shadow: 0 0 18px rgba(0,0,0,0.8);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 22px rgba(255, 44, 44, 0.9);
+    }
+
+    .project-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .project-info {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    body.light-mode .project-card {
+      background: #ffffff;
+      border-color: #e0e0e0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    /* ===== Contact ===== */
+    .contact a {
+      color: var(--primary);
+      text-decoration: none;
+      margin: 0 10px;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    .contact a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255, 44, 44, 0.9);
+    }
+
+    body.light-mode .contact a:hover {
+      color: #d81b1b;
+      text-shadow: none;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      border-top: 1px solid #1f2933;
+      color: #888;
+      margin-top: 2rem;
+    }
+
+    body.light-mode footer {
+      border-top-color: #e0e0e0;
+      color: #555;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+      }
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+      section {
+        margin: 1.5rem 1rem;
+        padding: 3rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 class="logo">HARSH<span>.dev</span></h1>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="toggle-btn" id="modeToggle">Dark</button>
+  </header>
+
+  <section id="home" class="hero">
+    <h1>Hi, I'm <span>Harsh Dubey</span></h1>
+    <p id="typing"></p>
+    <a href="#projects" class="btn">View My Work</a>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a passionate frontend developer focused on creating visually appealing and user-friendly web experiences.
+      I love blending creativity with code to craft smooth, functional designs.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">React</div>
+      <div class="skill">Node.js</div>
+      <div class="skill">Git & GitHub</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+       
+        <div class="project-info">
+          <h3>Game Hub</h3>
+          <p>A gaming UI made with pure JS and CSS animations.</p>
+          <a href="#" class="btn">View</a>
+        </div>
+      </div>
+      <div class="project-card">
+        
+        <div class="project-info">
+          <h3>Portfolio Site</h3>
+          <p>This portfolio site built using HTML, CSS, and JavaScript.</p>
+          <a href="#" class="btn">View</a>
+        </div>
+      </div>
+      <div class="project-card">
+       
+        <div class="project-info">
+          <h3>Todo App</h3>
+          <p>A task manager app using JavaScript and Local Storage.</p>
+          <a href="#" class="btn">View</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Let’s collaborate or just say hi 👋</p>
+    <a href="mailto:youremail@example.com">Email Me</a>
+    <div style="margin-top: 1rem;">
+      <a href="#">GitHub</a> |
+      <a href="#">LinkedIn</a> |
+      <a href="#">Twitter</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Harsh Dubey | Crafted with ❤️ using HTML, CSS & JS</p>
+  </footer>
+
+  <script>
+    // ===== Typing Animation =====
+    const typingText = document.getElementById("typing");
+    const textArray = ["Frontend Developer", "JavaScript Enthusiast", "UI Designer"];
+    let index = 0, charIndex = 0, isDeleting = false;
+
+    function typeEffect() {
+      const current = textArray[index];
+      typingText.textContent = current.slice(0, charIndex);
+
+      if (!isDeleting && charIndex < current.length) {
+        charIndex++;
+        setTimeout(typeEffect, 120);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeEffect, 60);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) index = (index + 1) % textArray.length;
+        setTimeout(typeEffect, isDeleting ? 1000 : 400);
+      }
+    }
+    typeEffect();
+
+    // ===== Dark Mode Toggle =====
+    const modeToggle = document.getElementById("modeToggle");
+    modeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+      document.querySelector("header").classList.toggle("light-mode");
+      modeToggle.textContent = document.body.classList.contains("light-mode") ? "Light" : "Dark";
+    });
+  </script>
+</body>
+</html>

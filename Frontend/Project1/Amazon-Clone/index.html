@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon.in</title>
+    
+    <link rel="icon" href="./Amazon_icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #e3e6e6; /* Amazon bg */
+}
+
+/* Header css */
+
+.logo {
+  width: 100px;
+}
+
+.Logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  position: relative;
+  top: -5px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.location-container {
+  display: flex;
+  align-items: end;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+/* SEARCH BAR WRAPPER */
+.search-bar {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  max-width: 800px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px #cdcdcd;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.search-bar:hover,
+.search-bar:focus-within {
+  box-shadow: 0 0 0 2px #f3a847;
+  transform: translateY(-1px);
+}
+
+/* LEFT "ALL ▾" BUTTON */
+.search-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 10px;
+  background-color: #f3f3f3;
+  border: none;
+  border-right: 1px solid #d5d5d5;
+  font-size: 0.8rem;
+  color: #111;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.search-bar-left:hover {
+  background-color: #e6e6e6;
+}
+
+/* MIDDLE INPUT */
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  font-size: 0.9rem;
+  color: #111;
+}
+
+.search-bar input::placeholder {
+  color: #555;
+}
+
+/* RIGHT SEARCH ICON BUTTON */
+.search-bar-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  background-color: #febd69;
+  border: none;
+  height: 40px;
+  cursor: pointer;
+}
+
+.search-bar-right:hover {
+  background-color: #f3a847;
+}
+
+.search-bar-right .material-symbols-outlined {
+  font-size: 1.3rem;
+  color: #111;
+}
+
+.flag {
+  width: 25px;
+}
+
+.flag-container {
+  display: flex;
+  align-items: center;
+}
+
+.acc-lists {
+  display: flex;
+  flex-direction: column;
+}
+
+.a-l {
+  font-weight: bold;
+}
+
+.add-btn {
+  display: flex;
+}
+
+.-o {
+  font-weight: bold;
+}
+
+.cart {
+  display: flex;
+  align-items: end;
+}
+
+.cart-spelling {
+  font-weight: bold;
+}
+
+/* MAIN HEADER BAR */
+.amazon-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #131921;
+  padding: 10px;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Mini-head css */
+.amazon_mini-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #232F3e;
+  color: white;
+  padding: 11px 0 7px 11px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.menu p {
+  margin-left: 2px;
+}
+
+.fresh {
+  display: flex;
+  align-items: center;
+  font-size: small;
+}
+
+.history {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* Main-Image */
+.main-section {
+  position: relative;
+  margin-bottom: 240px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-section img {
+  width: 100%;
+  display: block;
+}
+
+/* ====== CARD LAYOUT ====== */
+
+.shopping-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 16px;
+  flex-wrap: wrap;
+}
+
+/* first row: overlay on banner */
+.shopping-container1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -250px;
+  z-index: 10;
+}
+
+/* second row: normal flow under banner */
+.shopping-container2 {
+  margin-top: 20px;
+  padding: 20px 16px 40px;
+}
+
+/* individual card */
+.shopping-card {
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(15, 17, 17, 0.15);
+  flex: 1;
+  max-width: 23%;
+  min-width: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* card heading */
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #0f1111;
+}
+
+/* 2x2 grid of items */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.card-item {
+  text-decoration: none;
+  color: #0f1111;
+  font-size: 12px;
+}
+
+.card-item img {
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+  margin-bottom: 4px;
+  object-fit: cover;
+}
+
+/* blue link at bottom */
+.card-link {
+  font-size: 13px;
+  color: #007185;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  color: #c7511f;
+  text-decoration: underline;
+}
+
+/* ========= RESPONSIVE CARDS ========= */
+
+/* Tablets / small laptops: 2 cards per row */
+@media (max-width: 900px) {
+  .shopping-card {
+    max-width: 48%;
+    flex: 0 0 48%;
+  }
+
+  .main-section {
+    margin-bottom: 320px;
+  }
+}
+
+/* Phones: 1 card per row */
+@media (max-width: 600px) {
+  .shopping-card {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+
+  .main-section {
+    margin-bottom: 480px;
+  }
+}
+
+/* Footer */
+
+.amazon-footer {
+  margin-top: 40px;
+  background-color: #232f3e;
+  color: #ddd;
+  font-size: 13px;
+}
+
+/* Back to top bar */
+.footer-back-to-top {
+  display: block;
+  text-align: center;
+  padding: 12px 0;
+  background-color: #37475a;
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-back-to-top:hover {
+  background-color: #485769;
+}
+
+/* Main column section */
+.footer-main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #3a4553;
+}
+
+.footer-column h3 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.footer-column a {
+  display: block;
+  color: #ddd;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+/* Logo + language area */
+.footer-secondary {
+  background-color: #232f3e;
+  border-bottom: 1px solid #3a4553;
+}
+
+.footer-secondary-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 14px 20px 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.footer-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-logo {
+  width: 80px;
+}
+
+.footer-logo-text {
+  position: relative;
+  top: -3px;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* buttons */
+.footer-lang-btn,
+.footer-country-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid #848688;
+  background-color: #232f3e;
+  color: #ddd;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.footer-lang-btn:hover,
+.footer-country-btn:hover {
+  border-color: #fff;
+}
+
+.footer-flag {
+  width: 18px;
+}
+
+/* bottom tiny links */
+.footer-bottom {
+  background-color: #131a22;
+  text-align: center;
+  padding: 12px 10px 16px;
+}
+
+.footer-bottom-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 4px;
+}
+
+.footer-bottom-links a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.footer-bottom-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Responsive footer columns */
+@media (max-width: 768px) {
+  .footer-main {
+    justify-content: center;
+    text-align: left;
+  }
+
+  .footer-column {
+    width: 45%;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-column {
+    width: 100%;
+  }
+
+  .footer-secondary-inner {
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+    <!-- Amazon header -->
+    <header class="amazon-header">
+
+        <!-- Logo -->
+        <div class="Logo-container">
+            <img src="./White-Amazon-Logo-PNG-HD-Quality.png" alt="" class="logo">
+            <p class="logo-text">.in</p>
+        </div>
+
+        <!-- Location -->
+        <div class="location-container">
+            <span class="material-symbols-outlined">location_on</span>
+            <div>
+                <p class="small-text">Deliver to Harsh</p>
+                <p class="bold">New Delhi 110076</p>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <button class="search-bar-left" type="button">
+                <span>All</span>
+                <span class="material-symbols-outlined">arrow_drop_down</span>
+            </button>
+
+            <input type="text" placeholder="Search Amazon.in">
+
+            <button class="search-bar-right" type="button">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+        </div>
+
+        <!-- Flag -->
+        <div class="flag-container">
+            <img src="./Flag.png" alt="" class="flag">
+            <p>EN</p>
+            <span class="material-symbols-outlined">arrow_drop_down</span>
+        </div>
+
+        <!-- Account & Lists -->
+        <div class="acc-lists">
+            <p class="small-text">Hello, Harsh</p>
+            <div class="add-btn">
+                <p class="a-l">Account & Lists</p>
+                <span class="material-symbols-outlined">arrow_drop_down</span>
+            </div>
+        </div>
+
+        <!-- Returns & Orders -->
+        <div class="r-o">
+            <p class="small-text">Returns</p>
+            <p class="-o">& Orders</p>
+        </div>
+
+        <!-- Cart -->
+        <div class="cart">
+            <span class="material-symbols-outlined cart-icon">add_shopping_cart</span>
+            <p class="cart-spelling">Cart</p>
+        </div>
+
+    </header>
+
+    <!-- Amazon mini-head -->
+    <div class="amazon_mini-head">
+        <div class="menu">
+            <span class="material-symbols-outlined">menu</span>
+            <p>All</p>
+        </div>
+
+        <div class="fresh">
+            <p>Fresh</p>
+            <span class="material-symbols-outlined">arrow_drop_down</span>
+        </div>
+
+        <p>MX Player</p>
+        <p>Sell</p>
+        <p>Amazon Pay</p>
+        <p>Gift Card</p>
+        <p>Buy Again</p>
+        <p>Amazon Basic</p>
+        <p>Bestsellers</p>
+        <p>Today's Deal</p>
+        <p>Customer Service</p>
+        <p>Kindle ebook</p>
+        <p>Harsh's Amazon.in</p>
+        <p>Gift Ideas</p>
+
+        <div class="history">
+            <p>Browsing History</p>
+            <span class="material-symbols-outlined">arrow_drop_down</span>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero + first row of cards -->
+        <div class="main-section">
+            <img src="https://static-assets.business.amazon.com/assets/in/25th-sep-2023/1203_AB_GIF_Phase01_Website_Hero_2880x960_Start.jpg.transform/696x320/image.jpg" alt="image">
+    
+            <!-- shopping container 1 (overlay on banner) -->
+            <div class="shopping-container shopping-container1">
+    
+                <!-- Card 1 -->
+                <div class="shopping-card">
+                    <h3 class="card-title">Pick up where you left off</h3>
+    
+                    <div class="card-grid">
+                        <a href="#" class="card-item">
+                            <img src="https://campussutra.com/cdn/shop/files/CSMOVSRT7606_1_919bad06-bb14-4123-af90-e2120af8fad9.jpg?v=1731147688" alt="">
+                            <p>Shirts</p>
+                        </a>
+                        <a href="#" class="card-item">
+                            <img src="https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Rockerz_650_pp_renders_main_banner.124.png?v=1740735495" alt="">
+                            <p>Headphones</p>
+                        </a>
+                        <a href="#" class="card-item">
+                            <img src="https://www.titan.co.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Sites-titan-master-catalog/default/dwf2897f2b/images/Titan/Catalog/1805NM02_1.jpg?sw=360&sh=360" alt="">
+                            <p>Watches</p>
+                        </a>
+                        <a href="#" class="card-item">
+                            <img src="https://redtape.com/cdn/shop/files/RSL1073_1._bcd54810-97be-4448-ab60-5c07412084c9.jpg?v=1756809100" alt="">
+                            <p>Shoes</p>
+                        </a>
+                    </div>
+    
+                    <a href="#" class="card-link">See more</a>
+                </div>
+    
+                <!-- Card 2 -->
+                <div class="shopping-card">
+                    <h3 class="card-title">Continue shopping deals</h3>
+    
+                    <div class="card-grid">
+                        <a href="#" class="card-item">
+                            <img src="https://m.media-amazon.com/images/I/71UpXeeYmNL.jpg" alt="">
+                        </a>
+                        <a href="#" class="card-item">
+                            <img src="https://redtape.com/cdn/shop/files/RFJ1101_2d45da54-9854-4a34-82f0-475c2674b295.jpg?v=1763558852" alt="">
+                        </a>
+                        <a href="#" class="card-item">
+                            <img src="https://littleboxindia.com/cdn/shop/files/28d_d3808282-d2fc-45e4-88eb-23cb4910b970.jpg?v=1740750143" alt="">
+                        </a>
+                        <a href="#" class="card-item">
+                            <img src="https://rukminim2.flixcart.com/image/480/640/xif0q/book/5/c/w/jujutsu-kaisen-manga-book-set-volumes-0-10-combo-of-11-books-original-imagzz7vvcyddqcc.jpeg?q=90" alt="">
+                        </a>
+                    </div>
+    
+                    <a href="#" class="card-link">See more</a>
+                </div>
+    
+                <!-- Card 3 -->
+                <div class="shopping-card">
+                    <h3 class="card-title">Deals related to items you've saved</h3>
+    
+                    <div class="card-grid">
+                        <a href="#" class="card-item">
+                            <img src="https://image.hm.com/assets/hm/8d/c7/8dc7b1950c21ba26e6f6605af9d4742cc87dd586.jpg?imwidth=768" alt="">
+                        </a>
+                        <a href="#" class="card-item">
+                            <img src="https://sillypunter.com/wp-content/uploads/2024/07/Oversized-Heart-Explosive-MetallicaTshirt-In-India-by-Silly-Punter.jpg" alt="">
+                        </a>
+                        <a href="#" class="card-item">
+                            <img src="https://wittee.in/wp-content/uploads/2023/12/front-6574a427ec35c-Black_S_Oversized_T-shirt.jpg" alt="">
+                        </a>
+                        <a href="#" class="card-item">
+                            <img src="https://tshirtsale.co.nz/media/catalog/product/cache/61b1ce43b454505dcf4b8b732c5b6bb3/p/x/pxl_20250624_021624003.raw-01.cover.jpg" alt="">
+                        </a>
+                    </div>
+    
+                    <a href="#" class="card-link">See more</a>
+                </div>
+    
+                <!-- Card 4 -->
+                <div class="shopping-card">
+                    <h3 class="card-title">Up to 60% off | Footwear & handbags</h3>
+    
+                    <div class="card-grid">
+                        <a href="#" class="card-item">
+                            <img src="https://images.pexels.com/photos/19090/pexels-photo.jpg?cs=srgb&dl=pexels-webdonut-19090.jpg&fm=jpg" alt="">
+                        </a>
+                        <a href="#" class="card-item">
+                            <img src="https://www.jiomart.com/images/product/original/rvujjpnmzk/world-wear-footwear-new-latest-affordable-range-of-trendy-sports-running-shoes-for-men-product-images-rvujjpnmzk-0-202407151823.jpg?im=Resize=(500,630)" alt="">
+                        </a>
+                        <a href="#" class="card-item">
+                            <img src="https://assets.oyegifts.com/flowers-n-gifts/vendordata/resized/womens-modern-handbag-lightweight-shoulder-bag-with-comfy-straps-front.jpg" alt="">
+                        </a>
+                        <a href="#" class="card-item">
+                            <img src="https://assets.myntassets.com/dpr_1.5,q_30,w_400,c_limit,fl_progressive/assets/images/2025/OCTOBER/8/62ipH6FR_96ff1b3f345043ae9e5ccf0485f63685.jpg" alt="">
+                        </a>
+                    </div>
+    
+                    <a href="#" class="card-link">See more</a>
+                </div>
+    
+            </div> <!-- /shopping-container1 -->
+    
+        </div> <!-- /main-section -->
+    
+        <!-- Second row of cards (normal flow under banner) -->
+        <div class="shopping-container shopping-container2">
+    
+            <!-- Card 1 -->
+            <div class="shopping-card">
+                <h3 class="card-title">Up to 75% off | Headphones</h3>
+    
+                <div class="card-grid">
+                    <a href="#" class="card-item">
+                        <img src="https://m.media-amazon.com/images/I/51d+U2c57mL._AC_UF1000,1000_QL80_.jpg" alt="">
+                        
+                    </a>
+                </div>
+    
+                <a href="#" class="card-link">See more</a>
+            </div>
+    
+            <!-- Card 2 -->
+            <div class="shopping-card">
+                <h3 class="card-title">Revamp your home in style</h3>
+    
+                <div class="card-grid">
+                    <a href="#" class="card-item">
+                        <img src="https://www.urbanspacestore.in/cdn/shop/files/FullSizeRender_15_c5253051-0156-4f6c-bc37-8af23bf9058b_1200x1200.jpg?v=1757569226" alt="">
+                    </a>
+                    
+                </div>
+    
+                <a href="#" class="card-link">See more</a>
+            </div>
+    
+            <!-- Card 3 -->
+            <div class="shopping-card">
+                <h3 class="card-title">Up to 60% off | Furniture</h3>
+    
+                <div class="card-grid">
+                    <a href="#" class="card-item">
+                        <img src="https://www.mobelhomestore.com/cdn/shop/files/helbrp.jpg?v=1703153580" alt="">
+                    </a>
+                
+                </div>
+    
+                <a href="#" class="card-link">See more</a>
+            </div>
+    
+            <!-- Card 4 -->
+            <div class="shopping-card">
+                <h3 class="card-title">Get New Kitchen Accessories</h3>
+    
+                <div class="card-grid">
+                    <a href="#" class="card-item">
+                        <img src="https://ouchcart.com/cdn/shop/products/612ACME6keL_1024x.jpg?v=1721375312" alt="">
+                    </a>
+                    
+                </div>
+    
+                <a href="#" class="card-link">See more</a>
+            </div>
+    
+        </div> <!-- /shopping-container2 -->
+
+    </main>
+
+    <!-- Footer -->
+
+  <footer class="amazon-footer">
+
+  <!-- Back to top -->
+  <a href="#" class="footer-back-to-top">Back to top</a>
+
+  <!-- Main link columns -->
+  <div class="footer-main">
+    <div class="footer-column">
+      <h3>Get to Know Us</h3>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Press Releases</a>
+      <a href="#">Amazon Science</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Connect with Us</h3>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Make Money with Us</h3>
+      <a href="#">Sell on Amazon</a>
+      <a href="#">Become an Affiliate</a>
+      <a href="#">Advertise Your Products</a>
+      <a href="#">Fulfilment by Amazon</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Let Us Help You</h3>
+      <a href="#">Your Account</a>
+      <a href="#">Returns Centre</a>
+      <a href="#">100% Purchase Protection</a>
+      <a href="#">Help</a>
+    </div>
+  </div>
+
+  <!-- Logo / language strip -->
+  <div class="footer-secondary">
+    <div class="footer-secondary-inner">
+      <div class="footer-logo-wrap">
+        <img src="./White-Amazon-Logo-PNG-HD-Quality.png" alt="Amazon" class="footer-logo">
+        <span class="footer-logo-text">.in</span>
+      </div>
+
+      <button class="footer-lang-btn">
+        <span class="material-symbols-outlined">language</span>
+        <span>English</span>
+        <span class="material-symbols-outlined">arrow_drop_down</span>
+      </button>
+
+      <button class="footer-country-btn">
+        <img src="./Flag.png" alt="India" class="footer-flag">
+        <span>India</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Bottom tiny links + copyright -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-links">
+      <a href="#">Conditions of Use &amp; Sale</a>
+      <a href="#">Privacy Notice</a>
+      <a href="#">Interest-Based Ads</a>
+    </div>
+    <p class="footer-copy">© 2025 Harsh Amazon Clone</p>
+  </div>
+
+</footer>
+
+</body>
+</html>

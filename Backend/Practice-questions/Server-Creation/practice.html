@@ -1,0 +1,134 @@
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Practice Questions</title>
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    :root{
+  --header-bg: #0f66a8;
+  --header-foreground: #ffffff;
+  --muted: rgba(255,255,255,0.9);
+  --gap: 16px;
+  --max-width: 1100px;
+}
+
+.site-header{
+  background: var(--header-bg);
+  color: var(--header-foreground);
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+  flex-wrap: wrap;
+}
+
+/* Constrain content if you like */
+.site-header > * {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Brand area */
+.site-brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.site-logo{
+  width:44px;
+  height:44px;
+  border-radius:6px;
+  object-fit:cover;
+  flex: 0 0 44px;
+}
+.site-titles{
+  min-width: 0;
+  overflow: hidden;
+}
+.site-title{
+  font-size:20px;
+  font-weight:700;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+.site-subtitle{
+  font-size:12px;
+  opacity:0.95;
+  margin-top:2px;
+  color: var(--muted);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Nav area */
+.site-nav{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-top:0;
+  flex: 0 0 auto;
+}
+.nav-link{
+  color:var(--header-foreground);
+  text-decoration:none;
+  font-weight:600;
+  padding:8px 10px;
+  border-radius:6px;
+  transition: background-color .14s ease, transform .08s ease;
+}
+.nav-link:hover,
+.nav-link:focus{
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width:640px){
+  .site-header > * { width: 100%; max-width: none; margin-inline: 0; }
+  .site-brand{ justify-content: flex-start; }
+  .site-nav{
+    width:100%;
+    justify-content: flex-start;
+    gap:10px;
+    padding-top:10px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top:12px;
+  }
+}
+  </style>
+</head>
+<body>
+
+   <header class="site-header">
+  <div class="site-brand">
+    <div class="site-titles">
+      <div class="site-title">Practice Questions</div>
+      <div class="site-subtitle">Learn by building small examples</div>
+    </div>
+  </div>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="#" class="nav-link">Home</a>
+    <a href="#" class="nav-link">Men</a>
+    <a href="#" class="nav-link">Womens</a>
+    <a href="#" class="nav-link">Kids</a>
+    <a href="#" class="nav-link">Cart</a>
+  </nav>
+</header>
+</body>
+</html>

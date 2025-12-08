@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Harsh Dubey — Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+  /* ---------- THEME VARIABLES ---------- */
+  :root {
+    --bg: #ffffff;
+    --card: #f6f8fa;
+    --text: #111111;
+    --muted: #6b7280;
+    --accent: #3ea6ff;
+    --glass-border: rgba(0, 0, 0, 0.06);
+    --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    --btn-hover: #2a94e5;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0b0f14;
+    --card: #151b22;
+    --text: #f2f5fa;
+    --muted: #a8b3c4;
+    --accent: #58a6ff;
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 6px 22px rgba(0, 0, 0, 0.7);
+    --btn-hover: #3390ff;
+  }
+
+  /* ---------- BASE ---------- */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.4s ease, color 0.4s ease;
+    line-height: 1.45;
+    scroll-behavior: smooth;
+  }
+
+  .fade-transition {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .fade-transition.active {
+    opacity: 1;
+  }
+
+  /* ---------- HEADER ---------- */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+  }
+  .logo {
+    font-family: "Orbitron", sans-serif;
+    font-size: 1.6rem;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+
+  .theme-btn {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    color: var(--text);
+  }
+  .theme-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ---------- HERO SECTION ---------- */
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 8%;
+    flex-wrap: wrap;
+  }
+  .hero-left {
+    flex: 1;
+    min-width: 300px;
+  }
+  .hero-right {
+    flex: 1;
+    text-align: center;
+  }
+  .hero-title {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  .typing {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-top: 8px;
+    height: 30px;
+  }
+
+  .btn {
+    padding: 10px 14px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transition: background 0.25s ease, transform 0.15s ease;
+  }
+  .btn:hover {
+    background: var(--btn-hover);
+    transform: translateY(-2px);
+  }
+
+  /* ---------- TABS ---------- */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 8%;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text);
+    transition: all 0.2s ease;
+  }
+  .tab-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .tab-btn.active {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section {
+    padding: 40px 8%;
+  }
+  h2 {
+    font-size: 1.6rem;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  /* ---------- PROJECT GRID ---------- */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--glass-border);
+    padding: 20px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+  }
+  .project-card h3 {
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .project-card p {
+    color: var(--muted);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--glass-border);
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 980px) {
+    .hero { flex-direction: column; align-items: flex-start; }
+    .hero-right { width: 100%; order: 2; }
+    .hero-left { order: 1; width: 100%; }
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 16px; }
+    .hero-title { font-size: 1.6rem; }
+    .typing { font-size: 1rem; }
+    .tabs { gap: 6px; flex-wrap: wrap; }
+    .tab-btn { font-size: 0.9rem; padding: 7px 10px; }
+    .btn { padding: 9px 12px; font-size: 0.9rem; }
+  }
+
+  @media (max-width: 560px) {
+    .hero-right img { display: none; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 1.4rem; }
+    .typing { font-size: 0.95rem; }
+    .btn, .tab-btn { width: 100%; text-align: center; }
+  }
+  </style>
+</head>
+
+<body class="fade-transition active" data-theme="light">
+  <header>
+    <div class="logo">Harsh Dubey</div>
+    <button class="theme-btn" id="themeToggle">🌙 Dark Mode</button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-left">
+      <h1 class="hero-title">Hi, I'm Harsh Dubey 👋</h1>
+      <p class="typing" id="typing"></p>
+      <a href="#projects" class="btn">View My Work</a>
+    </div>
+    <div class="hero-right">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Developer" width="260">
+    </div>
+  </section>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="projects">Projects</button>
+    <button class="tab-btn" data-tab="games">Game Hub</button>
+    <button class="tab-btn" data-tab="contact">Contact</button>
+  </div>
+
+  <section id="projects" class="tab-content">
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>A responsive personal portfolio built using HTML, CSS, and JavaScript with theme switching and animations.</p>
+      </div>
+      <div class="project-card">
+        <h3>Task Manager App</h3>
+        <p>A simple JS app that lets you add, delete, and mark tasks using Local Storage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="games" class="tab-content" style="display:none;">
+    <h2>Game Hub</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Number Guessing Game</h3>
+        <p>A fun guessing game built using HTML, CSS, and JS.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="tab-content" style="display:none;">
+    <h2>Contact Me</h2>
+    <p style="text-align:center; color:var(--muted);">Email: harshdubey@example.com</p>
+  </section>
+
+  <footer>© 2025 Harsh Dubey. All rights reserved.</footer>
+
+  <!-- ---------- JS ---------- -->
+  <script>
+  // Typing Animation
+  const typingElement = document.getElementById("typing");
+  const roles = ["Web Developer", "UI Designer", "JavaScript Enthusiast"];
+  let roleIndex = 0, charIndex = 0;
+
+  function type() {
+    if (charIndex < roles[roleIndex].length) {
+      typingElement.textContent += roles[roleIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, 100);
+    } else {
+      setTimeout(erase, 1500);
+    }
+  }
+
+  function erase() {
+    if (charIndex > 0) {
+      typingElement.textContent = roles[roleIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(erase, 50);
+    } else {
+      roleIndex = (roleIndex + 1) % roles.length;
+      setTimeout(type, 300);
+    }
+  }
+  type();
+
+  // Theme Toggle
+  const themeToggle = document.getElementById("themeToggle");
+  const body = document.body;
+
+  themeToggle.addEventListener("click", () => {
+    body.classList.remove("active");
+    setTimeout(() => {
+      const newTheme = body.dataset.theme === "light" ? "dark" : "light";
+      body.dataset.theme = newTheme;
+      themeToggle.textContent = newTheme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+      body.classList.add("active");
+    }, 200);
+  });
+
+  // Tabs Switching
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".tab-content");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      contents.forEach(c => c.style.display = "none");
+      document.getElementById(tab.dataset.tab).style.display = "block";
+    });
+  });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Harsh Dubey — Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+  /* ---------- THEME VARIABLES ---------- */
+  :root {
+    --bg: #ffffff;
+    --card: #f6f8fa;
+    --text: #111111;
+    --muted: #6b7280;
+    --accent: #3ea6ff;
+    --glass-border: rgba(0, 0, 0, 0.06);
+    --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    --btn-hover: #2a94e5;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0b0f14;
+    --card: #151b22;
+    --text: #f2f5fa;
+    --muted: #a8b3c4;
+    --accent: #58a6ff;
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 6px 22px rgba(0, 0, 0, 0.7);
+    --btn-hover: #3390ff;
+  }
+
+  /* ---------- BASE ---------- */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.4s ease, color 0.4s ease;
+    line-height: 1.45;
+    scroll-behavior: smooth;
+  }
+
+  .fade-transition {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .fade-transition.active {
+    opacity: 1;
+  }
+
+  /* ---------- HEADER ---------- */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+  }
+  .logo {
+    font-family: "Orbitron", sans-serif;
+    font-size: 1.6rem;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+
+  .theme-btn {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    color: var(--text);
+  }
+  .theme-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ---------- HERO SECTION ---------- */
+  .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 8%;
+    flex-wrap: wrap;
+  }
+  .hero-left {
+    flex: 1;
+    min-width: 300px;
+  }
+  .hero-right {
+    flex: 1;
+    text-align: center;
+  }
+  .hero-title {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  .typing {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-top: 8px;
+    height: 30px;
+  }
+
+  .btn {
+    padding: 10px 14px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    transition: background 0.25s ease, transform 0.15s ease;
+  }
+  .btn:hover {
+    background: var(--btn-hover);
+    transform: translateY(-2px);
+  }
+
+  /* ---------- TABS ---------- */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 8%;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text);
+    transition: all 0.2s ease;
+  }
+  .tab-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .tab-btn.active {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section {
+    padding: 40px 8%;
+  }
+  h2 {
+    font-size: 1.6rem;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  /* ---------- PROJECT GRID ---------- */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--glass-border);
+    padding: 20px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+  }
+  .project-card h3 {
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .project-card p {
+    color: var(--muted);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--glass-border);
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 980px) {
+    .hero { flex-direction: column; align-items: flex-start; }
+    .hero-right { width: 100%; order: 2; }
+    .hero-left { order: 1; width: 100%; }
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 16px; }
+    .hero-title { font-size: 1.6rem; }
+    .typing { font-size: 1rem; }
+    .tabs { gap: 6px; flex-wrap: wrap; }
+    .tab-btn { font-size: 0.9rem; padding: 7px 10px; }
+    .btn { padding: 9px 12px; font-size: 0.9rem; }
+  }
+
+  @media (max-width: 560px) {
+    .hero-right img { display: none; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 1.4rem; }
+    .typing { font-size: 0.95rem; }
+    .btn, .tab-btn { width: 100%; text-align: center; }
+  }
+  </style>
+</head>
+
+<body class="fade-transition active" data-theme="light">
+  <header>
+    <div class="logo">Harsh Dubey</div>
+    <button class="theme-btn" id="themeToggle">🌙 Dark Mode</button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-left">
+      <h1 class="hero-title">Hi, I'm Harsh Dubey 👋</h1>
+      <p class="typing" id="typing"></p>
+      <a href="#projects" class="btn">View My Work</a>
+    </div>
+    <div class="hero-right">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Developer" width="260">
+    </div>
+  </section>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="projects">Projects</button>
+    <button class="tab-btn" data-tab="games">Game Hub</button>
+    <button class="tab-btn" data-tab="contact">Contact</button>
+  </div>
+
+  <section id="projects" class="tab-content">
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>A responsive personal portfolio built using HTML, CSS, and JavaScript with theme switching and animations.</p>
+      </div>
+      <div class="project-card">
+        <h3>Task Manager App</h3>
+        <p>A simple JS app that lets you add, delete, and mark tasks using Local Storage.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="games" class="tab-content" style="display:none;">
+    <h2>Game Hub</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Number Guessing Game</h3>
+        <p>A fun guessing game built using HTML, CSS, and JS.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="tab-content" style="display:none;">
+    <h2>Contact Me</h2>
+    <p style="text-align:center; color:var(--muted);">Email: harshdubey@example.com</p>
+  </section>
+
+  <footer>© 2025 Harsh Dubey. All rights reserved.</footer>
+
+  <!-- ---------- JS ---------- -->
+  <script>
+  // Typing Animation
+  const typingElement = document.getElementById("typing");
+  const roles = ["Web Developer", "UI Designer", "JavaScript Enthusiast"];
+  let roleIndex = 0, charIndex = 0;
+
+  function type() {
+    if (charIndex < roles[roleIndex].length) {
+      typingElement.textContent += roles[roleIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, 100);
+    } else {
+      setTimeout(erase, 1500);
+    }
+  }
+
+  function erase() {
+    if (charIndex > 0) {
+      typingElement.textContent = roles[roleIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(erase, 50);
+    } else {
+      roleIndex = (roleIndex + 1) % roles.length;
+      setTimeout(type, 300);
+    }
+  }
+  type();
+
+  // Theme Toggle
+  const themeToggle = document.getElementById("themeToggle");
+  const body = document.body;
+
+  themeToggle.addEventListener("click", () => {
+    body.classList.remove("active");
+    setTimeout(() => {
+      const newTheme = body.dataset.theme === "light" ? "dark" : "light";
+      body.dataset.theme = newTheme;
+      themeToggle.textContent = newTheme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode";
+      body.classList.add("active");
+    }, 200);
+  });
+
+  // Tabs Switching
+  const tabs = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".tab-content");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      contents.forEach(c => c.style.display = "none");
+      document.getElementById(tab.dataset.tab).style.display = "block";
+    });
+  });
+  </script>
+</body>
+</html>

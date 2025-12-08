@@ -1,0 +1,35 @@
+.navbar{
+          background-color: darkblue;
+          height: 50px;
+}
+a{
+   color: white;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+#para1{
+    background-color: greenyellow;
+    color: blue;
+    background-image: url(https://cdn.sanity.io/images/gxl82biv/production/8f79646507c26f67cf47227d0bbedfb18dd3fa4b-5120x3424.png?rect=0,364,5120,2688&w=1200&h=630&fit=max&auto=format);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: local;
+}
+#para2{
+    background-color: lightblue;
+    color: brown;
+    height: 220px;
+    overflow: scroll;
+    border: 5px solid black;
+    border-radius: 20px;
+    background-image: url(https://th.bing.com/th/id/OIP.DOQWF2YQ30nCSkOIwOQoYQHaI3?o=7&cb=12rm=3&rs=1&pid=ImgDetMain&o=7&rm=3);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: scroll;
+}
+#para3{
+   background: red url(https://media.istockphoto.com/id/1329694672/photo/astronaut-doing-space-walk-and-explore-planet-such-as-mars.jpg?b=1&s=170667a&w=0&k=20&c=nU3lhoGM461Fy1IlLfcwV6NXU-iqM0BsytX-lR4-Fss=) no-repeat scroll center / cover;
+   color: white;
+}

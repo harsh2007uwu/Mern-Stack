@@ -1,0 +1,1413 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Harsh Dubey — Unified Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- THEME VARIABLES ---------- */
+    :root {
+  --bg: #ffffff;
+  --card: #f6f8fa;
+  --text: #111111;
+  --muted: #6b7280;
+  --accent: #3ea6ff; /* Sky Blue */
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+  --bg: #0d1117;
+  --card: #161b22;
+  --text: #e6e6e6;
+  --muted: #9aa4b2;
+  --accent: #58a6ff; /* Bright blue for dark mode */
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+
+    /* ---------- RESET & BASE ---------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition:background .25s ease, color .25s ease;
+      line-height:1.45;
+    }
+
+    a{color:inherit}
+    img{max-width:100%;display:block}
+
+    /* ---------- LAYOUT ---------- */
+    .container{
+      max-width:1100px;
+      margin:32px auto;
+      padding:0 20px;
+    }
+
+    header.site-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo {
+      font-family:"Orbitron", sans-serif;
+      font-weight:600;
+      font-size:1.4rem;
+      color:var(--text);
+      letter-spacing:0.4px;
+    }
+    .logo .dot{ color:var(--accent) }
+
+    .controls{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .theme-btn, .tab-btn{
+      background:transparent;
+      border:1px solid var(--glass-border);
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+      transition:transform .12s ease, background .15s ease, color .15s ease;
+      font-weight:600;
+    }
+    .theme-btn:hover, .tab-btn:hover{ transform:translateY(-3px) }
+    .theme-btn{ display:flex; gap:8px; align-items:center }
+
+    /* ---------- TAB NAV ---------- */
+    .tabs{
+      display:flex;
+      gap:8px;
+      margin: 8px 0 24px;
+      flex-wrap:wrap;
+    }
+
+    .tab-btn.active{
+      background: linear-gradient(90deg, rgba(255,44,44,0.12), rgba(255,44,44,0.04));
+      border-color: rgba(255,44,44,0.18);
+      color:var(--accent);
+      box-shadow: 0 8px 20px rgba(255,44,44,0.06);
+    }
+
+    /* ---------- CARD WRAPPER ---------- */
+    .panel{
+      background:var(--card);
+      border-radius:14px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--glass-border);
+      transition:opacity .25s ease, transform .25s ease;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      display:flex;
+      gap:22px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    .hero-left{ flex:1; min-width:260px }
+    .hero-right{ width:360px; max-width:40%; min-width:260px }
+
+    h1.hero-title{
+      font-size:2.05rem;
+      margin-bottom:8px;
+    }
+    .hero-title .accent{ color:var(--accent) }
+
+    .typing {
+      color:var(--accent);
+      font-family:"Orbitron",sans-serif;
+      font-size:1.05rem;
+      min-height:28px;
+      margin-top:6px;
+    }
+
+    p.lead{
+      color:var(--muted);
+      margin-top:14px;
+      max-width:56ch;
+    }
+
+    .cta-row{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap }
+    .btn{
+      padding:10px 14px;
+      background:var(--accent);
+      color:#fff;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 8px 18px rgba(255,44,44,0.12);
+    }
+    .btn.secondary{ background:transparent; color:var(--text); border:1px solid var(--glass-border) }
+
+    .hero-preview{
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid var(--glass-border);
+      background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+      padding:10px;
+    }
+
+    /* ---------- GRID SECTIONS ---------- */
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .skill{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+      padding:14px;
+      border-radius:10px;
+      text-align:center;
+      border:1px solid var(--glass-border);
+      font-weight:600;
+    }
+
+    /* ---------- PROJECT CARDS ---------- */
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+
+    .project-card{
+      border-radius:12px;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+      border:1px solid var(--glass-border);
+      box-shadow:0 10px 20px rgba(0,0,0,0.06);
+      transition:transform .18s ease, box-shadow .18s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .project-card:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,0.08) }
+
+    .project-thumb{ height:150px; background-size:cover; background-position:center; }
+    .project-info{ padding:14px; display:flex; gap:10px; flex-direction:column; flex:1 }
+    .project-info h3{ color:var(--accent); margin-bottom:8px }
+    .project-info p{ color:var(--muted); font-size:0.95rem; flex:1 }
+
+    .project-actions{ display:flex; gap:10px; margin-top:12px }
+
+    /* ---------- GAME HUB styles (adapted) ---------- */
+    .game-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+
+    .game-card{
+      background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
+      border-radius:12px;
+      padding:12px;
+      border:1px solid var(--glass-border);
+      text-align:center;
+      transition:transform .18s ease, box-shadow .18s ease;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .game-thumb{
+      height:140px;
+      border-radius:8px;
+      margin-bottom:10px;
+      background-size:cover;
+      background-position:center;
+    }
+    .play-btn{
+      margin-top:8px;
+      padding:8px 12px;
+      border-radius:8px;
+      border:none;
+      cursor:pointer;
+      font-weight:700;
+      background:var(--accent);
+      color:white;
+    }
+
+    .popup{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,0.5);
+      z-index:80;
+      display:none;
+    }
+    .popup .popup-content{
+      background:var(--card);
+      padding:26px;
+      border-radius:12px;
+      border:1px solid var(--glass-border);
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+
+    /* ---------- LIGHT PORTFOLIO preview styles ---------- */
+    .light-preview{
+      background:linear-gradient(180deg,#fff,#f9fafc);
+      padding:12px;
+      border-radius:10px;
+      border:1px solid #e7e7e7;
+    }
+
+    /* ---------- CONTACT & FOOTER ---------- */
+    .contact-grid{ display:grid; grid-template-columns:1fr 320px; gap:18px; margin-top:18px }
+    .contact-card{ padding:14px; border-radius:10px; border:1px solid var(--glass-border); background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(255,255,255,0.02)) }
+
+    footer{ text-align:center; padding:20px 0; color:var(--muted); margin-top:18px; font-size:0.92rem }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width:980px){
+      .hero-right{ order:2; width:100% }
+      .hero-left{ order:1; width:100% }
+      .contact-grid{ grid-template-columns:1fr }
+    }
+
+    @media (max-width:560px){
+      .theme-btn, .tab-btn{ padding:8px 10px; font-size:0.95rem }
+      .hero-title{ font-size:1.5rem }
+      .hero-preview{ display:none }
+    }
+
+    /* ---------- small animation helpers ---------- */
+    .fade-in{ animation:fadeIn .5s ease both }
+    @keyframes fadeIn{ from{ opacity:0; transform:translateY(6px)} to{ opacity:1; transform:none } }
+
+  </style>
+</head>
+<body data-theme="light">
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="brand">
+        <div class="logo">HARSH<span class="dot">.dev</span></div>
+        <div style="font-size:0.86rem;color:var(--muted)">Frontend Developer</div>
+      </div>
+
+      <div class="controls">
+        <div class="tabs" role="tablist" aria-label="Main sections">
+          <button class="tab-btn active" data-target="home" role="tab" aria-selected="true">Home</button>
+          <button class="tab-btn" data-target="projects" role="tab">Projects</button>
+          <button class="tab-btn" data-target="games" role="tab">Game Hub</button>
+          <button class="tab-btn" data-target="light-portfolio" role="tab">Light Preview</button>
+          <button class="tab-btn" data-target="contact" role="tab">Contact</button>
+        </div>
+
+        <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙 <span style="font-weight:600;margin-left:6px" id="themeLabel">Dark</span></button>
+      </div>
+    </header>
+
+    <!-- MAIN PANELS -->
+    <main>
+
+      <!-- HOME -->
+      <section id="home" class="panel fade-in" data-panel>
+        <div class="hero">
+          <div class="hero-left">
+            <h1 class="hero-title">Hi, I'm <span class="accent">Harsh Dubey</span></h1>
+            <div class="typing" id="typing">Frontend Developer</div>
+            <p class="lead">I build polished, responsive interfaces using HTML, CSS and JavaScript. I enjoy turning ideas into delightful user experiences — from micro-interactions to complete UI systems.</p>
+
+            <div class="cta-row">
+              <a class="btn" href="#projects" id="viewWorkBtn">View Work</a>
+              <a class="btn secondary" href="mailto:harshdubey@example.com">Contact Me</a>
+            </div>
+
+            <section style="margin-top:20px">
+              <h3 style="color:var(--accent);margin-bottom:10px">Skills</h3>
+              <div class="grid-3">
+                <div class="skill">HTML5</div>
+                <div class="skill">CSS3</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">React.js</div>
+                <div class="skill">Responsive Design</div>
+                <div class="skill">Git & GitHub</div>
+              </div>
+            </section>
+          </div>
+
+          <div class="hero-right hero-preview">
+            <!-- small preview card -->
+            <div style="padding:12px;border-radius:10px">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-weight:700">Selected Project</div>
+                  <div style="color:var(--muted);font-size:0.95rem">Game Hub — UI & animations</div>
+                </div>
+                <div style="font-size:0.9rem;color:var(--muted)">2025</div>
+              </div>
+
+              <div style="margin-top:12px">
+                <img src="https://via.placeholder.com/460x220?text=Game+Hub" alt="project preview" style="border-radius:8px;width:100%;height:140px;object-fit:cover">
+              </div>
+
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <a class="btn" id="openGameBtn">Open Game Hub</a>
+                <a class="btn secondary" id="openLightPreviewBtn">Open Light Preview</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="panel" data-panel style="display:none">
+        <h2 style="color:var(--accent)">Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-thumb" style="background-image:url('https://via.placeholder.com/800x450?text=Portfolio+Site')"></div>
+            <div class="project-info">
+              <h3>Portfolio Website</h3>
+              <p>A responsive portfolio that showcases skills, projects, and contact info. Built with modern, accessible HTML/CSS and JS animations.</p>
+              <div class="project-actions">
+                <a class="btn" id="viewPortfolioBtn">View</a>
+                <a class="btn secondary" href="Portfolio.html" target="_blank" rel="noopener">Open New Tab</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb" style="background-image:url('https://via.placeholder.com/800x450?text=Todo+App')"></div>
+            <div class="project-info">
+              <h3>Task Manager App</h3>
+              <p>A to-do web app using JavaScript and Local Storage for persistence. A clean UI + keyboard friendly interactions.</p>
+              <div class="project-actions">
+                <a class="btn" href="#" onclick="alert('Task Manager demo not included — add your file or link')">View</a>
+                <a class="btn secondary" href="#" onclick="alert('Add your GitHub link here')">Source</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb" style="background-image:url('https://via.placeholder.com/800x450?text=Game+Hub')"></div>
+            <div class="project-info">
+              <h3>Game Hub</h3>
+              <p>A collection of game UI cards with neon styling and popups — integrated in the Game Hub tab.</p>
+              <div class="project-actions">
+                <a class="btn" id="viewGameFromProjects">Open in App</a>
+                <a class="btn secondary" href="game.html" target="_blank" rel="noopener">Open New Tab</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- GAMES -->
+      <section id="games" class="panel" data-panel style="display:none">
+        <h2 style="color:var(--accent)">Game Hub</h2>
+        <div class="game-grid">
+          <!-- Game Card 1 -->
+          <div class="game-card">
+            <div class="game-thumb" style="background-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2735020/capsule_616x353.jpg?t=1713872868')"></div>
+            <h3>Cyber Rush</h3>
+            <p style="color:var(--muted)">Futuristic racing through neon tracks.</p>
+            <button class="play-btn">Play</button>
+          </div>
+
+          <!-- Game Card 2 -->
+          <div class="game-card">
+            <div class="game-thumb" style="background-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/301650/capsule_616x353.jpg?t=1579791137')"></div>
+            <h3>BattleZone</h3>
+            <p style="color:var(--muted)">Dominate the arena with powerful weapons.</p>
+            <button class="play-btn">Play</button>
+          </div>
+
+          <!-- Game Card 3 -->
+          <div class="game-card">
+            <div class="game-thumb" style="background-image: url('https://cf.geekdo-images.com/ywuJx23OTpKGGXg4XYrF7Q__opengraph/img/k5CRUCPANgx7s4gwbvjSMOrB8XI=/0x502:1342x1207/fit-in/1200x630/filters:strip_icc()/pic7547211.jpg')"></div>
+            <h3>RedStrike</h3>
+            <p style="color:var(--muted)">Classic FPS action with modern style.</p>
+            <button class="play-btn">Play</button>
+          </div>
+
+          <!-- Game Card 4 -->
+          <div class="game-card">
+            <div class="game-thumb" style="background-image: url('https://cdn-0001.qstv.on.epicgames.com/qhhGofoPuorQxlFfiH/image/landscape_comp.jpeg')"></div>
+            <h3>Neon Drift</h3>
+            <p style="color:var(--muted)">Drift through the neon city under rain.</p>
+            <button class="play-btn">Play</button>
+          </div>
+        </div>
+
+        <!-- popup -->
+        <div class="popup" id="gamePopup">
+          <div class="popup-content">
+            <h3>🚀 Launching Game...</h3>
+            <p style="color:var(--muted)">Please wait while we set up your world!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIGHT PORTFOLIO PREVIEW -->
+      <section id="light-portfolio" class="panel" data-panel style="display:none">
+        <h2 style="color:var(--accent)">Light Portfolio Preview</h2>
+        <div class="light-preview" style="margin-top:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <div>
+              <h3 style="margin-bottom:4px">HARSH.dev — Light Theme</h3>
+              <div style="color:var(--muted)">A modern, minimal light-themed portfolio with typing animation & project grid.</div>
+            </div>
+            <div>
+              <a class="btn" href="Portfolio.html" target="_blank" rel="noopener">Open Full Light Site</a>
+            </div>
+          </div>
+
+          <div style="margin-top:18px">
+            <div class="projects-grid">
+              <div class="project-card">
+                <div class="project-thumb" style="background-image:url('https://via.placeholder.com/800x450?text=Game+UI')"></div>
+                <div class="project-info">
+                  <h3>Game Hub</h3>
+                  <p>Game UI built using JS & CSS animations.</p>
+                  <div class="project-actions">
+                    <a class="btn" id="openGameFromLight">Open</a>
+                    <a class="btn secondary" href="game.html" target="_blank" rel="noopener">Open New Tab</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-thumb" style="background-image:url('https://via.placeholder.com/800x450?text=Portfolio')"></div>
+                <div class="project-info">
+                  <h3>Portfolio Site</h3>
+                  <p>Light theme portfolio built with Orbitron heading & Poppins body fonts.</p>
+                  <div class="project-actions">
+                    <a class="btn" href="Portfolio.html" target="_blank">Open</a>
+                    <a class="btn secondary" href="#" onclick="alert('Link to source or demo')">Source</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-thumb" style="background-image:url('https://via.placeholder.com/800x450?text=Todo+App')"></div>
+                <div class="project-info">
+                  <h3>Todo App</h3>
+                  <p>Task manager using Local Storage for persistence.</p>
+                  <div class="project-actions">
+                    <a class="btn" href="#" onclick="alert('Add Task Manager demo file to open')">Open</a>
+                    <a class="btn secondary" href="#" onclick="alert('Add GitHub link')">Source</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="panel" data-panel style="display:none">
+        <h2 style="color:var(--accent)">Contact</h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Let's build something great</h3>
+            <p style="color:var(--muted)">I'm available for freelance or full-time roles. I love working on polished UI, small teams, and product-focused startups.</p>
+
+            <div style="margin-top:14px">
+              <strong>Email</strong>
+              <div><a href="mailto:harshdubey@example.com">harshdubey@example.com</a></div>
+              <div style="margin-top:8px">
+                <strong>Links</strong>
+                <div style="margin-top:6px">
+                  <a href="https://github.com/harsh2007uwu" target="_blank" rel="noopener">GitHub</a> |
+                  <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>Quick Message</h3>
+            <form id="contactForm" onsubmit="return false" style="display:flex;flex-direction:column;gap:10px">
+              <input type="text" placeholder="Your name" id="name" style="padding:10px;border-radius:8px;border:1px solid var(--glass-border)">
+              <input type="email" placeholder="Your email" id="email" style="padding:10px;border-radius:8px;border:1px solid var(--glass-border)">
+              <textarea placeholder="Message" id="message" rows="4" style="padding:10px;border-radius:8px;border:1px solid var(--glass-border)"></textarea>
+              <div style="display:flex;gap:8px">
+                <button class="btn" id="sendBtn">Send</button>
+                <button class="btn secondary" id="resetBtn" type="reset">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © 2025 Harsh Dubey — Built with HTML, CSS & JavaScript
+    </footer>
+  </div>
+
+  <!-- ---------- SCRIPTS ---------- -->
+  <script>
+    // ---------- Tab system ----------
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('[data-panel]');
+
+    function showPanel(id){
+      panels.forEach(p => { p.style.display = (p.id === id) ? 'block' : 'none'; });
+      tabButtons.forEach(b => {
+        if (b.dataset.target === id) b.classList.add('active'), b.setAttribute('aria-selected','true');
+        else b.classList.remove('active'), b.setAttribute('aria-selected','false');
+      });
+      // small fade-in
+      const active = document.getElementById(id);
+      if(active) { active.classList.remove('fade-in'); void active.offsetWidth; active.classList.add('fade-in'); }
+      // scroll top of container for better UX
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => showPanel(btn.dataset.target));
+    });
+
+    // default panel
+    showPanel('home');
+
+    // quick open actions
+    document.getElementById('openGameBtn').addEventListener('click', ()=> showPanel('games'));
+    document.getElementById('viewWorkBtn').addEventListener('click', ()=> showPanel('projects'));
+    document.getElementById('viewGameFromProjects').addEventListener('click', ()=> showPanel('games'));
+    document.getElementById('openGameFromLight').addEventListener('click', ()=> showPanel('games'));
+    document.getElementById('openLightPreviewBtn').addEventListener('click', ()=> showPanel('light-portfolio'));
+    document.getElementById('viewPortfolioBtn').addEventListener('click', ()=> {
+      showPanel('light-portfolio');
+      // scroll to preview inside
+      setTimeout(()=> { const el=document.querySelector('#light-portfolio'); if(el) el.scrollIntoView({behavior:'smooth'}) }, 220);
+    });
+
+    // ---------- Theme toggle ----------
+    const themeToggle = document.getElementById('themeToggle');
+    const themeLabel = document.getElementById('themeLabel');
+
+    function setTheme(theme){
+      if(theme === 'dark'){
+        document.documentElement.setAttribute('data-theme','dark');
+        document.body.setAttribute('data-theme','dark');
+        themeToggle.textContent = '☀️ ';
+        themeToggle.appendChild(themeLabel);
+        themeLabel.textContent = 'Light';
+      } else {
+        document.documentElement.setAttribute('data-theme','light');
+        document.body.removeAttribute('data-theme');
+        themeToggle.textContent = '🌙 ';
+        themeToggle.appendChild(themeLabel);
+        themeLabel.textContent = 'Dark';
+      }
+    }
+
+    // preserve preference in localStorage
+    const savedTheme = localStorage.getItem('harsh_theme') || 'light';
+    setTheme(savedTheme);
+    themeToggle.addEventListener('click', ()=>{
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+      localStorage.setItem('harsh_theme', next);
+    });
+
+    // ---------- Typing animation (from your portfolio) ----------
+    const typingEl = document.getElementById('typing');
+    const phrases = ["Frontend Developer","JavaScript Enthusiast","UI Designer"];
+    let pIndex = 0, cIndex = 0, deleting = false;
+
+    function typeLoop(){
+      const current = phrases[pIndex];
+      if(!deleting){
+        cIndex++;
+        typingEl.textContent = current.slice(0,cIndex);
+        if(cIndex === current.length){
+          deleting = true;
+          setTimeout(typeLoop, 900);
+        } else setTimeout(typeLoop, 90);
+      } else {
+        cIndex--;
+        typingEl.textContent = current.slice(0,cIndex);
+        if(cIndex === 0){
+          deleting = false;
+          pIndex = (pIndex + 1) % phrases.length;
+          setTimeout(typeLoop, 300);
+        } else setTimeout(typeLoop, 45);
+      }
+    }
+    typeLoop();
+
+    // ---------- Game Hub play button behavior ----------
+    const playButtons = document.querySelectorAll('.play-btn');
+    const popup = document.getElementById('gamePopup');
+    playButtons.forEach(btn => {
+      btn.addEventListener('click', (e)=>{
+        popup.style.display = 'flex';
+        setTimeout(()=> popup.style.display = 'none', 1400);
+      });
+    });
+
+    // ---------- Contact form (demo) ----------
+    document.getElementById('sendBtn').addEventListener('click', ()=>{
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name || !email || !message){ alert('Please fill all fields.'); return; }
+      // This is a demo placeholder. Replace with real server or mailto if needed.
+      alert('Thanks, ' + name + '! Message sent (demo).');
+      document.getElementById('contactForm').reset();
+    });
+    document.getElementById('resetBtn').addEventListener('click', ()=> {
+      // keep page UX smooth
+    });
+
+    // ---------- Accessibility: keyboard nav between tabs ----------
+    document.querySelectorAll('.tab-btn').forEach((btn, idx, arr) => {
+      btn.addEventListener('keydown', (e) => {
+        if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
+          e.preventDefault();
+          const next = e.key === 'ArrowRight' ? idx+1 : idx-1;
+          const target = arr[(next + arr.length) % arr.length];
+          target.focus();
+        }
+      });
+    });
+
+  </script>
+</body>
+</html>
+=======
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Harsh Dubey — Unified Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- THEME VARIABLES ---------- */
+    :root {
+  --bg: #ffffff;
+  --card: #f6f8fa;
+  --text: #111111;
+  --muted: #6b7280;
+  --accent: #3ea6ff; /* Sky Blue */
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+  --bg: #0d1117;
+  --card: #161b22;
+  --text: #e6e6e6;
+  --muted: #9aa4b2;
+  --accent: #58a6ff; /* Bright blue for dark mode */
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+
+    /* ---------- RESET & BASE ---------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition:background .25s ease, color .25s ease;
+      line-height:1.45;
+    }
+
+    a{color:inherit}
+    img{max-width:100%;display:block}
+
+    /* ---------- LAYOUT ---------- */
+    .container{
+      max-width:1100px;
+      margin:32px auto;
+      padding:0 20px;
+    }
+
+    header.site-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo {
+      font-family:"Orbitron", sans-serif;
+      font-weight:600;
+      font-size:1.4rem;
+      color:var(--text);
+      letter-spacing:0.4px;
+    }
+    .logo .dot{ color:var(--accent) }
+
+    .controls{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .theme-btn, .tab-btn{
+      background:transparent;
+      border:1px solid var(--glass-border);
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+      transition:transform .12s ease, background .15s ease, color .15s ease;
+      font-weight:600;
+    }
+    .theme-btn:hover, .tab-btn:hover{ transform:translateY(-3px) }
+    .theme-btn{ display:flex; gap:8px; align-items:center }
+
+    /* ---------- TAB NAV ---------- */
+    .tabs{
+      display:flex;
+      gap:8px;
+      margin: 8px 0 24px;
+      flex-wrap:wrap;
+    }
+
+    .tab-btn.active{
+      background: linear-gradient(90deg, rgba(255,44,44,0.12), rgba(255,44,44,0.04));
+      border-color: rgba(255,44,44,0.18);
+      color:var(--accent);
+      box-shadow: 0 8px 20px rgba(255,44,44,0.06);
+    }
+
+    /* ---------- CARD WRAPPER ---------- */
+    .panel{
+      background:var(--card);
+      border-radius:14px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--glass-border);
+      transition:opacity .25s ease, transform .25s ease;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      display:flex;
+      gap:22px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    .hero-left{ flex:1; min-width:260px }
+    .hero-right{ width:360px; max-width:40%; min-width:260px }
+
+    h1.hero-title{
+      font-size:2.05rem;
+      margin-bottom:8px;
+    }
+    .hero-title .accent{ color:var(--accent) }
+
+    .typing {
+      color:var(--accent);
+      font-family:"Orbitron",sans-serif;
+      font-size:1.05rem;
+      min-height:28px;
+      margin-top:6px;
+    }
+
+    p.lead{
+      color:var(--muted);
+      margin-top:14px;
+      max-width:56ch;
+    }
+
+    .cta-row{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap }
+    .btn{
+      padding:10px 14px;
+      background:var(--accent);
+      color:#fff;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 8px 18px rgba(255,44,44,0.12);
+    }
+    .btn.secondary{ background:transparent; color:var(--text); border:1px solid var(--glass-border) }
+
+    .hero-preview{
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid var(--glass-border);
+      background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+      padding:10px;
+    }
+
+    /* ---------- GRID SECTIONS ---------- */
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .skill{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+      padding:14px;
+      border-radius:10px;
+      text-align:center;
+      border:1px solid var(--glass-border);
+      font-weight:600;
+    }
+
+    /* ---------- PROJECT CARDS ---------- */
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+
+    .project-card{
+      border-radius:12px;
+      overflow:hidden;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+      border:1px solid var(--glass-border);
+      box-shadow:0 10px 20px rgba(0,0,0,0.06);
+      transition:transform .18s ease, box-shadow .18s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .project-card:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(0,0,0,0.08) }
+
+    .project-thumb{ height:150px; background-size:cover; background-position:center; }
+    .project-info{ padding:14px; display:flex; gap:10px; flex-direction:column; flex:1 }
+    .project-info h3{ color:var(--accent); margin-bottom:8px }
+    .project-info p{ color:var(--muted); font-size:0.95rem; flex:1 }
+
+    .project-actions{ display:flex; gap:10px; margin-top:12px }
+
+    /* ---------- GAME HUB styles (adapted) ---------- */
+    .game-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+
+    .game-card{
+      background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
+      border-radius:12px;
+      padding:12px;
+      border:1px solid var(--glass-border);
+      text-align:center;
+      transition:transform .18s ease, box-shadow .18s ease;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .game-thumb{
+      height:140px;
+      border-radius:8px;
+      margin-bottom:10px;
+      background-size:cover;
+      background-position:center;
+    }
+    .play-btn{
+      margin-top:8px;
+      padding:8px 12px;
+      border-radius:8px;
+      border:none;
+      cursor:pointer;
+      font-weight:700;
+      background:var(--accent);
+      color:white;
+    }
+
+    .popup{
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,0.5);
+      z-index:80;
+      display:none;
+    }
+    .popup .popup-content{
+      background:var(--card);
+      padding:26px;
+      border-radius:12px;
+      border:1px solid var(--glass-border);
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+
+    /* ---------- LIGHT PORTFOLIO preview styles ---------- */
+    .light-preview{
+      background:linear-gradient(180deg,#fff,#f9fafc);
+      padding:12px;
+      border-radius:10px;
+      border:1px solid #e7e7e7;
+    }
+
+    /* ---------- CONTACT & FOOTER ---------- */
+    .contact-grid{ display:grid; grid-template-columns:1fr 320px; gap:18px; margin-top:18px }
+    .contact-card{ padding:14px; border-radius:10px; border:1px solid var(--glass-border); background:linear-gradient(180deg, rgba(0,0,0,0.02), rgba(255,255,255,0.02)) }
+
+    footer{ text-align:center; padding:20px 0; color:var(--muted); margin-top:18px; font-size:0.92rem }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width:980px){
+      .hero-right{ order:2; width:100% }
+      .hero-left{ order:1; width:100% }
+      .contact-grid{ grid-template-columns:1fr }
+    }
+
+    @media (max-width:560px){
+      .theme-btn, .tab-btn{ padding:8px 10px; font-size:0.95rem }
+      .hero-title{ font-size:1.5rem }
+      .hero-preview{ display:none }
+    }
+
+    /* ---------- small animation helpers ---------- */
+    .fade-in{ animation:fadeIn .5s ease both }
+    @keyframes fadeIn{ from{ opacity:0; transform:translateY(6px)} to{ opacity:1; transform:none } }
+
+  </style>
+</head>
+<body data-theme="light">
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="brand">
+        <div class="logo">HARSH<span class="dot">.dev</span></div>
+        <div style="font-size:0.86rem;color:var(--muted)">Frontend Developer</div>
+      </div>
+
+      <div class="controls">
+        <div class="tabs" role="tablist" aria-label="Main sections">
+          <button class="tab-btn active" data-target="home" role="tab" aria-selected="true">Home</button>
+          <button class="tab-btn" data-target="projects" role="tab">Projects</button>
+          <button class="tab-btn" data-target="games" role="tab">Game Hub</button>
+          <button class="tab-btn" data-target="light-portfolio" role="tab">Light Preview</button>
+          <button class="tab-btn" data-target="contact" role="tab">Contact</button>
+        </div>
+
+        <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙 <span style="font-weight:600;margin-left:6px" id="themeLabel">Dark</span></button>
+      </div>
+    </header>
+
+    <!-- MAIN PANELS -->
+    <main>
+
+      <!-- HOME -->
+      <section id="home" class="panel fade-in" data-panel>
+        <div class="hero">
+          <div class="hero-left">
+            <h1 class="hero-title">Hi, I'm <span class="accent">Harsh Dubey</span></h1>
+            <div class="typing" id="typing">Frontend Developer</div>
+            <p class="lead">I build polished, responsive interfaces using HTML, CSS and JavaScript. I enjoy turning ideas into delightful user experiences — from micro-interactions to complete UI systems.</p>
+
+            <div class="cta-row">
+              <a class="btn" href="#projects" id="viewWorkBtn">View Work</a>
+              <a class="btn secondary" href="mailto:harshdubey@example.com">Contact Me</a>
+            </div>
+
+            <section style="margin-top:20px">
+              <h3 style="color:var(--accent);margin-bottom:10px">Skills</h3>
+              <div class="grid-3">
+                <div class="skill">HTML5</div>
+                <div class="skill">CSS3</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">React.js</div>
+                <div class="skill">Responsive Design</div>
+                <div class="skill">Git & GitHub</div>
+              </div>
+            </section>
+          </div>
+
+          <div class="hero-right hero-preview">
+            <!-- small preview card -->
+            <div style="padding:12px;border-radius:10px">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-weight:700">Selected Project</div>
+                  <div style="color:var(--muted);font-size:0.95rem">Game Hub — UI & animations</div>
+                </div>
+                <div style="font-size:0.9rem;color:var(--muted)">2025</div>
+              </div>
+
+              <div style="margin-top:12px">
+                <img src="https://via.placeholder.com/460x220?text=Game+Hub" alt="project preview" style="border-radius:8px;width:100%;height:140px;object-fit:cover">
+              </div>
+
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <a class="btn" id="openGameBtn">Open Game Hub</a>
+                <a class="btn secondary" id="openLightPreviewBtn">Open Light Preview</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="panel" data-panel style="display:none">
+        <h2 style="color:var(--accent)">Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-thumb" style="background-image:url('https://via.placeholder.com/800x450?text=Portfolio+Site')"></div>
+            <div class="project-info">
+              <h3>Portfolio Website</h3>
+              <p>A responsive portfolio that showcases skills, projects, and contact info. Built with modern, accessible HTML/CSS and JS animations.</p>
+              <div class="project-actions">
+                <a class="btn" id="viewPortfolioBtn">View</a>
+                <a class="btn secondary" href="Portfolio.html" target="_blank" rel="noopener">Open New Tab</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb" style="background-image:url('https://via.placeholder.com/800x450?text=Todo+App')"></div>
+            <div class="project-info">
+              <h3>Task Manager App</h3>
+              <p>A to-do web app using JavaScript and Local Storage for persistence. A clean UI + keyboard friendly interactions.</p>
+              <div class="project-actions">
+                <a class="btn" href="#" onclick="alert('Task Manager demo not included — add your file or link')">View</a>
+                <a class="btn secondary" href="#" onclick="alert('Add your GitHub link here')">Source</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb" style="background-image:url('https://via.placeholder.com/800x450?text=Game+Hub')"></div>
+            <div class="project-info">
+              <h3>Game Hub</h3>
+              <p>A collection of game UI cards with neon styling and popups — integrated in the Game Hub tab.</p>
+              <div class="project-actions">
+                <a class="btn" id="viewGameFromProjects">Open in App</a>
+                <a class="btn secondary" href="game.html" target="_blank" rel="noopener">Open New Tab</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- GAMES -->
+      <section id="games" class="panel" data-panel style="display:none">
+        <h2 style="color:var(--accent)">Game Hub</h2>
+        <div class="game-grid">
+          <!-- Game Card 1 -->
+          <div class="game-card">
+            <div class="game-thumb" style="background-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2735020/capsule_616x353.jpg?t=1713872868')"></div>
+            <h3>Cyber Rush</h3>
+            <p style="color:var(--muted)">Futuristic racing through neon tracks.</p>
+            <button class="play-btn">Play</button>
+          </div>
+
+          <!-- Game Card 2 -->
+          <div class="game-card">
+            <div class="game-thumb" style="background-image: url('https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/301650/capsule_616x353.jpg?t=1579791137')"></div>
+            <h3>BattleZone</h3>
+            <p style="color:var(--muted)">Dominate the arena with powerful weapons.</p>
+            <button class="play-btn">Play</button>
+          </div>
+
+          <!-- Game Card 3 -->
+          <div class="game-card">
+            <div class="game-thumb" style="background-image: url('https://cf.geekdo-images.com/ywuJx23OTpKGGXg4XYrF7Q__opengraph/img/k5CRUCPANgx7s4gwbvjSMOrB8XI=/0x502:1342x1207/fit-in/1200x630/filters:strip_icc()/pic7547211.jpg')"></div>
+            <h3>RedStrike</h3>
+            <p style="color:var(--muted)">Classic FPS action with modern style.</p>
+            <button class="play-btn">Play</button>
+          </div>
+
+          <!-- Game Card 4 -->
+          <div class="game-card">
+            <div class="game-thumb" style="background-image: url('https://cdn-0001.qstv.on.epicgames.com/qhhGofoPuorQxlFfiH/image/landscape_comp.jpeg')"></div>
+            <h3>Neon Drift</h3>
+            <p style="color:var(--muted)">Drift through the neon city under rain.</p>
+            <button class="play-btn">Play</button>
+          </div>
+        </div>
+
+        <!-- popup -->
+        <div class="popup" id="gamePopup">
+          <div class="popup-content">
+            <h3>🚀 Launching Game...</h3>
+            <p style="color:var(--muted)">Please wait while we set up your world!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIGHT PORTFOLIO PREVIEW -->
+      <section id="light-portfolio" class="panel" data-panel style="display:none">
+        <h2 style="color:var(--accent)">Light Portfolio Preview</h2>
+        <div class="light-preview" style="margin-top:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <div>
+              <h3 style="margin-bottom:4px">HARSH.dev — Light Theme</h3>
+              <div style="color:var(--muted)">A modern, minimal light-themed portfolio with typing animation & project grid.</div>
+            </div>
+            <div>
+              <a class="btn" href="Portfolio.html" target="_blank" rel="noopener">Open Full Light Site</a>
+            </div>
+          </div>
+
+          <div style="margin-top:18px">
+            <div class="projects-grid">
+              <div class="project-card">
+                <div class="project-thumb" style="background-image:url('https://via.placeholder.com/800x450?text=Game+UI')"></div>
+                <div class="project-info">
+                  <h3>Game Hub</h3>
+                  <p>Game UI built using JS & CSS animations.</p>
+                  <div class="project-actions">
+                    <a class="btn" id="openGameFromLight">Open</a>
+                    <a class="btn secondary" href="game.html" target="_blank" rel="noopener">Open New Tab</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-thumb" style="background-image:url('https://via.placeholder.com/800x450?text=Portfolio')"></div>
+                <div class="project-info">
+                  <h3>Portfolio Site</h3>
+                  <p>Light theme portfolio built with Orbitron heading & Poppins body fonts.</p>
+                  <div class="project-actions">
+                    <a class="btn" href="Portfolio.html" target="_blank">Open</a>
+                    <a class="btn secondary" href="#" onclick="alert('Link to source or demo')">Source</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-thumb" style="background-image:url('https://via.placeholder.com/800x450?text=Todo+App')"></div>
+                <div class="project-info">
+                  <h3>Todo App</h3>
+                  <p>Task manager using Local Storage for persistence.</p>
+                  <div class="project-actions">
+                    <a class="btn" href="#" onclick="alert('Add Task Manager demo file to open')">Open</a>
+                    <a class="btn secondary" href="#" onclick="alert('Add GitHub link')">Source</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="panel" data-panel style="display:none">
+        <h2 style="color:var(--accent)">Contact</h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Let's build something great</h3>
+            <p style="color:var(--muted)">I'm available for freelance or full-time roles. I love working on polished UI, small teams, and product-focused startups.</p>
+
+            <div style="margin-top:14px">
+              <strong>Email</strong>
+              <div><a href="mailto:harshdubey@example.com">harshdubey@example.com</a></div>
+              <div style="margin-top:8px">
+                <strong>Links</strong>
+                <div style="margin-top:6px">
+                  <a href="https://github.com/harsh2007uwu" target="_blank" rel="noopener">GitHub</a> |
+                  <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>Quick Message</h3>
+            <form id="contactForm" onsubmit="return false" style="display:flex;flex-direction:column;gap:10px">
+              <input type="text" placeholder="Your name" id="name" style="padding:10px;border-radius:8px;border:1px solid var(--glass-border)">
+              <input type="email" placeholder="Your email" id="email" style="padding:10px;border-radius:8px;border:1px solid var(--glass-border)">
+              <textarea placeholder="Message" id="message" rows="4" style="padding:10px;border-radius:8px;border:1px solid var(--glass-border)"></textarea>
+              <div style="display:flex;gap:8px">
+                <button class="btn" id="sendBtn">Send</button>
+                <button class="btn secondary" id="resetBtn" type="reset">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © 2025 Harsh Dubey — Built with HTML, CSS & JavaScript
+    </footer>
+  </div>
+
+  <!-- ---------- SCRIPTS ---------- -->
+  <script>
+    // ---------- Tab system ----------
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('[data-panel]');
+
+    function showPanel(id){
+      panels.forEach(p => { p.style.display = (p.id === id) ? 'block' : 'none'; });
+      tabButtons.forEach(b => {
+        if (b.dataset.target === id) b.classList.add('active'), b.setAttribute('aria-selected','true');
+        else b.classList.remove('active'), b.setAttribute('aria-selected','false');
+      });
+      // small fade-in
+      const active = document.getElementById(id);
+      if(active) { active.classList.remove('fade-in'); void active.offsetWidth; active.classList.add('fade-in'); }
+      // scroll top of container for better UX
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => showPanel(btn.dataset.target));
+    });
+
+    // default panel
+    showPanel('home');
+
+    // quick open actions
+    document.getElementById('openGameBtn').addEventListener('click', ()=> showPanel('games'));
+    document.getElementById('viewWorkBtn').addEventListener('click', ()=> showPanel('projects'));
+    document.getElementById('viewGameFromProjects').addEventListener('click', ()=> showPanel('games'));
+    document.getElementById('openGameFromLight').addEventListener('click', ()=> showPanel('games'));
+    document.getElementById('openLightPreviewBtn').addEventListener('click', ()=> showPanel('light-portfolio'));
+    document.getElementById('viewPortfolioBtn').addEventListener('click', ()=> {
+      showPanel('light-portfolio');
+      // scroll to preview inside
+      setTimeout(()=> { const el=document.querySelector('#light-portfolio'); if(el) el.scrollIntoView({behavior:'smooth'}) }, 220);
+    });
+
+    // ---------- Theme toggle ----------
+    const themeToggle = document.getElementById('themeToggle');
+    const themeLabel = document.getElementById('themeLabel');
+
+    function setTheme(theme){
+      if(theme === 'dark'){
+        document.documentElement.setAttribute('data-theme','dark');
+        document.body.setAttribute('data-theme','dark');
+        themeToggle.textContent = '☀️ ';
+        themeToggle.appendChild(themeLabel);
+        themeLabel.textContent = 'Light';
+      } else {
+        document.documentElement.setAttribute('data-theme','light');
+        document.body.removeAttribute('data-theme');
+        themeToggle.textContent = '🌙 ';
+        themeToggle.appendChild(themeLabel);
+        themeLabel.textContent = 'Dark';
+      }
+    }
+
+    // preserve preference in localStorage
+    const savedTheme = localStorage.getItem('harsh_theme') || 'light';
+    setTheme(savedTheme);
+    themeToggle.addEventListener('click', ()=>{
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+      localStorage.setItem('harsh_theme', next);
+    });
+
+    // ---------- Typing animation (from your portfolio) ----------
+    const typingEl = document.getElementById('typing');
+    const phrases = ["Frontend Developer","JavaScript Enthusiast","UI Designer"];
+    let pIndex = 0, cIndex = 0, deleting = false;
+
+    function typeLoop(){
+      const current = phrases[pIndex];
+      if(!deleting){
+        cIndex++;
+        typingEl.textContent = current.slice(0,cIndex);
+        if(cIndex === current.length){
+          deleting = true;
+          setTimeout(typeLoop, 900);
+        } else setTimeout(typeLoop, 90);
+      } else {
+        cIndex--;
+        typingEl.textContent = current.slice(0,cIndex);
+        if(cIndex === 0){
+          deleting = false;
+          pIndex = (pIndex + 1) % phrases.length;
+          setTimeout(typeLoop, 300);
+        } else setTimeout(typeLoop, 45);
+      }
+    }
+    typeLoop();
+
+    // ---------- Game Hub play button behavior ----------
+    const playButtons = document.querySelectorAll('.play-btn');
+    const popup = document.getElementById('gamePopup');
+    playButtons.forEach(btn => {
+      btn.addEventListener('click', (e)=>{
+        popup.style.display = 'flex';
+        setTimeout(()=> popup.style.display = 'none', 1400);
+      });
+    });
+
+    // ---------- Contact form (demo) ----------
+    document.getElementById('sendBtn').addEventListener('click', ()=>{
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(!name || !email || !message){ alert('Please fill all fields.'); return; }
+      // This is a demo placeholder. Replace with real server or mailto if needed.
+      alert('Thanks, ' + name + '! Message sent (demo).');
+      document.getElementById('contactForm').reset();
+    });
+    document.getElementById('resetBtn').addEventListener('click', ()=> {
+      // keep page UX smooth
+    });
+
+    // ---------- Accessibility: keyboard nav between tabs ----------
+    document.querySelectorAll('.tab-btn').forEach((btn, idx, arr) => {
+      btn.addEventListener('keydown', (e) => {
+        if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
+          e.preventDefault();
+          const next = e.key === 'ArrowRight' ? idx+1 : idx-1;
+          const target = arr[(next + arr.length) % arr.length];
+          target.focus();
+        }
+      });
+    });
+
+  </script>
+</body>
+</html>
+

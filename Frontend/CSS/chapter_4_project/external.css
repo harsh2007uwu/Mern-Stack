@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    background-color: black;
+    height: 8vh;
+    width: 100vw;
+    border: 3px solid yellow;
+}
+a{
+    text-decoration: none;
+}
+
+#a1{
+    color: white;
+    font-family: sans-serif;
+    font-size: large;
+    font-weight: 400;
+    position: absolute;
+    left: 10vw;
+     margin-top: 20px;
+}
+#a2{
+    color: white;
+    font-family: sans-serif;
+    font-size: large;
+    font-weight: 400;
+    position: absolute;
+    left: 35vw;
+    margin-top: 20px;
+  
+}
+#a3{
+    color: white;
+    font-family: sans-serif;
+    font-size: large;
+    font-weight: 400;
+    position: absolute;
+    left: 60vw;
+     margin-top: 20px;
+}
+#a4{
+    color: white;
+    font-family: sans-serif;
+    font-size: large;
+    font-weight: 400;
+    position: absolute;
+    left: 85vw;
+     margin-top: 20px;
+}
+
+#div1{
+   width: 50vw;
+   background-color:red;
+   color: black;
+    display: inline-block;
+   border: 2px solid black;
+   height: 70vh;
+   overflow: scroll;
+  
+}
+
+#div2{
+    width: 50vw;
+    background-color: green;
+    color: black;
+    display: inline-block;
+     position: absolute;
+     border: 2px solid black;
+        height: 70vh;
+        overflow: scroll;
+   
+}
+main{
+ margin-top: 10px;
+ margin-bottom: 10px;
+}
+
+footer{
+    background-color: rgb(166, 116, 222);
+    height: 8vh;
+    width: 100vw;
+    border: 3px solid yellow;
+}
+
+#foot{
+color: rgb(69, 6, 230);
+ google font-family: “Ballu Bhai” ;
+ font-variant: small-caps;
+    font-size: x-large;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 25px;
+
+}
