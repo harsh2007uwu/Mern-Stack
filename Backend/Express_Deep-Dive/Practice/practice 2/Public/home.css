@@ -1,0 +1,152 @@
+body{
+            margin: 0;
+            padding: 0;
+            font-family: "Roboto", sans-serif;
+            background-color: black;
+            color: white;
+        }
+
+      /* Header */
+
+        header{
+            display: flex;
+            height: 9vh;
+            background-color: red;
+            align-items: center;
+            border-bottom: 1px solid #8aa244;
+            position: sticky;
+            z-index: 100;
+            top: 0;
+        }
+        .text{
+             font-family: "Inter", sans-serif;
+            padding-left: 1.5%;
+            padding-right: 1%;
+            color: rgb(255, 255, 255);
+            text-shadow:  1px 2px 2px black;
+
+        }
+        ul{
+            list-style: none;
+            display: flex;
+            gap: 80px;
+            width: 80vw;
+            justify-content: end;
+        }
+        a{
+            text-decoration: none;
+           font-weight: bolder;
+            font-size: large;
+            padding: 8px 14px;
+           color: white;
+            transition-property: all;
+            transition-timing-function: ease-in 0.3s;
+            
+
+        }
+        a:hover{
+            font-size: larger;
+            text-shadow: 0 3px 2px black;
+        }
+
+        /* Main */
+
+        main{
+            margin-top: 40px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100%;
+            
+        }
+
+        .container1{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+           height: 100%;
+            width: 100%;
+        }
+        .container1 h1{
+            font-size: 280%;
+            text-shadow: 0 0 20px red;
+            justify-self: center;
+        }
+        .houses{
+            font-size: 140%;
+            text-shadow: 0 0 20px red;
+            justify-self: start;
+            width: 100%;
+            margin-left: 10%;
+        }
+                    .cards-cont{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    gap: 30px;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+}
+
+                    
+
+        .cards{
+            display: flex;
+            flex-direction: column;
+            height:350px;
+            width:250px;
+            overflow: hidden;
+            background-color: white;
+            border: 2px solid red;
+            border-radius: 10px;
+            color: black;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .cards:hover{
+            transform: scale(1.07);
+            box-shadow: 0 0 40px red;
+        }
+        .cards img{
+            height: 45%;
+            width: 100%;
+        }
+        .card-body{
+            padding: 10px;
+        }
+
+
+        .card_title {
+         font-size: 20px;
+         margin-bottom: 6px;
+        }
+
+        .card_location {
+          color: #717171;
+          margin-bottom: 8px;
+        }
+
+        .card_price {
+         font-weight: bold;
+         color: #ff385c;
+        }
+
+        .card_rating {
+         margin-top: 6px;
+        }
+     @media (max-width: 900px){
+    .cards-cont{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px){
+    .cards-cont{
+        grid-template-columns: 1fr;
+    }
+}
+
+

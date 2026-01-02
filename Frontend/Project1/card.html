@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: "Roboto", sans-serif;
+            background-color: black;
+            color: white;
+        }
+        header{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        header h1{
+            text-shadow: 2px 2px 3px;
+        }
+        nav{
+            width: 100vw;
+            height: 8vh;
+
+        }
+        header nav ul li a{
+            text-decoration: none;
+            color: white
+        }
+        ul{
+            height: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            font-size: large;
+            font-weight: bold;
+            align-items: center;
+            background-color: red;
+            box-shadow: 0 0 10px rgb(251, 2, 2); 
+        }
+        main{
+            margin-top: 50px;
+            padding: 20px;
+        }
+        .cards{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            height: 100%;
+        }
+        .card1{
+            display: flex;
+            flex-direction: column;
+            height: 350px;
+            width: 250px;
+            overflow:hidden;
+            border-radius: 10px;
+            background-color: white;
+            color: black;
+            border: 2px solid red;
+            transition-property: all;
+            transition-duration: 0.2s;
+            transition-timing-function: ease-in-out;
+        }
+        .card1:hover{
+            height: 400px;
+            width:300px;
+            box-shadow: 0 0 40px red;
+        }
+        .card1 img{
+            height: 45%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Harsh.Dev</h1>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="cards">
+            <div class="card1">
+                <img src="https://m.media-amazon.com/images/S/pv-target-images/2f8bff6c311e5dac1077d58e40aa8007d20a312b5f8f01df4620cf5f0ffeeb3e.jpg" alt="Image">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium possimus architecto atque alias dolorem. Sed earum molestiae ea! Fugiat accusamus alias illo quod veniam pariatur. Neque ad optio magnam saepe?</p>
+            </div>
+            <div class="card1">
+                <img src="https://m.media-amazon.com/images/S/pv-target-images/2f8bff6c311e5dac1077d58e40aa8007d20a312b5f8f01df4620cf5f0ffeeb3e.jpg" alt="Image">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium possimus architecto atque alias dolorem. Sed earum molestiae ea! Fugiat accusamus alias illo quod veniam pariatur. Neque ad optio magnam saepe?</p>
+            </div>
+            <div class="card1">
+                <img src="https://m.media-amazon.com/images/S/pv-target-images/2f8bff6c311e5dac1077d58e40aa8007d20a312b5f8f01df4620cf5f0ffeeb3e.jpg" alt="Image">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium possimus architecto atque alias dolorem. Sed earum molestiae ea! Fugiat accusamus alias illo quod veniam pariatur. Neque ad optio magnam saepe?</p>
+            </div>
+            <div class="card1">
+                <img src="https://m.media-amazon.com/images/S/pv-target-images/2f8bff6c311e5dac1077d58e40aa8007d20a312b5f8f01df4620cf5f0ffeeb3e.jpg" alt="Image">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium possimus architecto atque alias dolorem. Sed earum molestiae ea! Fugiat accusamus alias illo quod veniam pariatur. Neque ad optio magnam saepe?</p>
+            </div>
+            <div class="card1">
+                <img src="https://m.media-amazon.com/images/S/pv-target-images/2f8bff6c311e5dac1077d58e40aa8007d20a312b5f8f01df4620cf5f0ffeeb3e.jpg" alt="Image">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium possimus architecto atque alias dolorem. Sed earum molestiae ea! Fugiat accusamus alias illo quod veniam pariatur. Neque ad optio magnam saepe?</p>
+            </div>
+            <div class="card1">
+                <img src="https://m.media-amazon.com/images/S/pv-target-images/2f8bff6c311e5dac1077d58e40aa8007d20a312b5f8f01df4620cf5f0ffeeb3e.jpg" alt="Image">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium possimus architecto atque alias dolorem. Sed earum molestiae ea! Fugiat accusamus alias illo quod veniam pariatur. Neque ad optio magnam saepe?</p>
+            </div>
+            <div class="card1">
+                <img src="https://m.media-amazon.com/images/S/pv-target-images/2f8bff6c311e5dac1077d58e40aa8007d20a312b5f8f01df4620cf5f0ffeeb3e.jpg" alt="Image">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium possimus architecto atque alias dolorem. Sed earum molestiae ea! Fugiat accusamus alias illo quod veniam pariatur. Neque ad optio magnam saepe?</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
